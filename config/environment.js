@@ -43,6 +43,10 @@ module.exports = function(environment) {
     ENV.APP.autoboot = false;
   }
 
+  if (environment === 'staging') {
+    ENV.rootURL = '/tracery-live/';
+  }
+
   if (environment === 'production') {
     ENV.rootURL = '/tracery-live/';
   }

@@ -118,7 +118,9 @@ export default Route.extend({
     "using the query parameters",
     "by copying and pasting from the address bar"
   ],
-  "instruction": "To see how this text is constructed, click the Edit button. You can use <b>HTML</b>, images, Font Awesome classes <i class=\"fa fa-fire\"></i>, emoji 🤘, and other stuff!",
+  "instruction": "To see how this text is constructed, click the Edit button. You can use <b>HTML</b>, images, Font Awesome classes <i class=\"fa fa-#fa-class#\"></i>, emoji #emoji#, and other stuff!",
+  "fa-class": ["fire", "gavel", "fighter-jet", "transgender-alt", "neuter", "mars-double", "venus-double", "rocket", "signing", "ticket", "thermometer-0\"></i><i class=\"fa fa-thermometer-2\"></i><i class=\"fa fa-thermometer-3\"></i><i class=\"fa fa-thermometer-4", "tree", "barcode"],
+  "emoji": ["🤘", "🤔", "😅", "🤓", "🤠", "😱", "💩", "😻", "😾", "🙈", "🧕", "🧙", "💁", "🤦", "💆", "👳", "👌", "🤙", "💞", "💖", "👅", "🙏", "💅", "🦍", "🐶", "🐈", "🦀", "🐙", "🦂", "🍱", "🔛", "🔝", "⚠", "🚮", "🆗", "🆒", "🆓", "🆕", "💯", "😓", "😭"],
   "more info": "For more information on Tracery and what you can do with it, visit <a href=\"http://tracery.io\">tracery.io</a>."
 });
   },
