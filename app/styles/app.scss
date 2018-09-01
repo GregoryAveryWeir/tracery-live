@@ -1,0 +1,23 @@
+@import "node_modules/hocus-pocus/hocus-pocus";
+
+.actions {
+  text-align: center;
+}
+
+div.jsoneditor {
+  height: 60vh;
+}
+
+.wrapper {
+  padding: 2em;
+  align-items: stretch;
+
+  > .container {
+    width: 100%;
+  }
+}
+
+.footer-text {
+  text-align: center;
+  font-size: small;
+}

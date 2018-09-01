@@ -1,0 +1,37 @@
+<div class="sticky-footer wrapper">
+<div class="container">
+  <p>
+    {{sanitize output}}
+  </p>
+
+  <div class={{if editing '' 'hidden'}}>
+    <p>
+        {{tracery-json-editor json=model onChange=(action 'setJSON') mode='code' modes=null
+          onError=(action 'jsonError') onBadChange=(action 'jsonError')}}
+    </p>
+
+    <p><small>Some HTML tags and styles are allowed. Because #hex colors mess with Tracery syntax, use rgb() colors.</small></p>
+
+    <p class="actions">
+      <button {{action 'saveToURL'}} disabled={{errored}}>Save to URL <i class="fa fa-save"></i></button>
+      <button {{action 'discardChanges'}} disabled={{resetDisabled}}>Discard Changes <i class="fa fa-trash"></i></button>
+    </p>
+  </div>
+</div>
+<footer>
+  <p class="actions">
+    <button {{action 'shuffle'}}>Shuffle <i class="fa fa-random"></i></button>
+    <button {{action 'edit'}}>{{if editing 'Close Editor' 'Edit'}} <i class="fa fa-edit"></i></button>
+    <a disabled={{tweetDisabled}} class="btn {{if tweetDisabled 'btn-disabled'}}" target="_blank"
+      href="{{twitterURL.content}}">
+      Tweet This Grammar <i class="fa fa-twitter"></i>
+    </a>
+  </p>
+  <p class="footer-text">
+    <a href="http://tracery.io">Tracery</a> was created by <a href="http://www.galaxykate.com/">GalaxyKate</a>. Compressed URL inspired by <a href="https://itty.bitty.site/">itty.bitty.site</a> by <a href="https://github.com/alcor">Nicholas Jitkoff</a>.
+  </p>
+  <p class="footer-text">
+    Tracery Live was created by <a href="http://ludusnovus.net/">Gregory Avery-Weir</a>. <a href="https://github.com/GregoryAveryWeir/tracery-live">Check out the source on GitHub.</a>
+  </p>
+</footer>
+</div>
