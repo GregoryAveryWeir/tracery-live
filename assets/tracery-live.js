@@ -140,7 +140,9 @@
         "grammars": ["grammars", "some JSON", "a bunch of incomprehensible code", "a special language", "just a few characters", "the sort of code you can see here", "L-systems", "fractals (sort of)"],
         "share them": ["share them", "show them to others", "give them as gifts", "show them off", "distribute them throughout the world", "spread them across the internet"],
         "with their urls": ["with their URLs", "with only their web addresses", "using the query parameters", "by copying and pasting from the address bar"],
-        "instruction": "To see how this text is constructed, click the Edit button. You can use <b>HTML</b>, images, Font Awesome classes <i class=\"fa fa-fire\"></i>, emoji 🤘, and other stuff!",
+        "instruction": "To see how this text is constructed, click the Edit button. You can use <b>HTML</b>, images, Font Awesome classes <i class=\"fa fa-#fa-class#\"></i>, emoji #emoji#, and other stuff!",
+        "fa-class": ["fire", "gavel", "fighter-jet", "transgender-alt", "neuter", "mars-double", "venus-double", "rocket", "signing", "ticket", "thermometer-0\"></i><i class=\"fa fa-thermometer-2\"></i><i class=\"fa fa-thermometer-3\"></i>]<i class=\"fa fa-thermometer-4", "tree", "barcode"],
+        "emoji": ["🤘"],
         "more info": "For more information on Tracery and what you can do with it, visit <a href=\"http://tracery.io\">tracery.io</a>."
       });
     }
