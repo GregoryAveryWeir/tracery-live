@@ -626,7 +626,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("tracery-live/app")["default"].create({"name":"tracery-live","version":"0.0.0+09735f1b"});
+            require("tracery-live/app")["default"].create({"name":"tracery-live","version":"0.0.0+a14b4e24"});
           }
         
 //# sourceMappingURL=tracery-live.map

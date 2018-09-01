@@ -3,7 +3,7 @@
 	"file": "tracery-live.css",
 	"sourceRoot": "C:/Users/Grego/Documents/Projects/tracery-live/app/styles",
 	"sources": [
-		"../../sass_compiler-input_base_path-WixW8PcL.tmp/app/styles/app.scss",
+		"../../sass_compiler-input_base_path-6krgEOdC.tmp/app/styles/app.scss",
 		"../../../node_modules/hocus-pocus/hocus-pocus.scss",
 		"../../../node_modules/hocus-pocus/sass/_colors.scss",
 		"../../../node_modules/hocus-pocus/sass/_defaults.scss",
