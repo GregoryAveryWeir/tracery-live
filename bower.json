@@ -1,6 +1,0 @@
-{
-  "name": "tracery-live",
-  "dependencies": {
-    "sanitize.js": "^1.0.0"
-  }
-}

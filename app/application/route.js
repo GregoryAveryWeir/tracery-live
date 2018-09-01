@@ -32,9 +32,9 @@ export default Route.extend({
   "thanks to": [
     "with thanks to",
     "in honor of",
-    "based on work by",
+    "based on",
     "as a blatant ripoff of",
-    "but impossible without the work of",
+    "but impossible without",
     "as tribute to",
     "in support of",
     "using"
