@@ -12,6 +12,11 @@
 
     <p><small>Some HTML tags and styles are allowed. Because #hex colors mess with Tracery syntax, use rgb() colors.</small></p>
 
+    <p class={{if overlongUrl 'error'}}>
+      URL size: {{compressed.length}}
+      {{#if overlongUrl}}This grammar is long enough that it might not work with all browsers and services. Try saving it to a Gist or similar service. You can use {{baseURL}}?url=[URL-component-encoded address of a grammar file].{{/if}}
+    </p>
+
     <p class="actions">
       <button {{action 'saveToURL'}} disabled={{errored}}>Save to URL <i class="fa fa-save"></i></button>
       <button {{action 'discardChanges'}} disabled={{resetDisabled}}>Discard Changes <i class="fa fa-trash"></i></button>

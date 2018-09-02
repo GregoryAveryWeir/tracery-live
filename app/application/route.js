@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import {inject as service} from '@ember/service';
+import $ from 'jquery';
 
 export default Route.extend({
   decompress: service(),
@@ -7,6 +8,9 @@ export default Route.extend({
   model(params) {
     if(params.json) {
       return this.decompress.zipToString(params.json);
+    }
+    if(params.url) {
+      return $.get('https://cors-anywhere.herokuapp.com/' + decodeURIComponent(params.url)).then(result => result);
     }
     return JSON.stringify({
   "origin": [

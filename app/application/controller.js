@@ -4,9 +4,10 @@ import {not, or} from '@ember/object/computed';
 import {inject as service} from '@ember/service';
 import tracery from 'tracery-grammar';
 import {Promise} from 'rsvp';
+import DS from 'ember-data';
 
 export default Controller.extend({
-  queryParams: ['json'],
+  queryParams: ['json', 'url'],
   json: null,
   version: 0,
   editing: false,
@@ -14,6 +15,10 @@ export default Controller.extend({
   dirty: false,
   shortUrl: null,
   shareUrl: null,
+
+  overlongUrl: computed('compressed', 'compressed.isSettled', function() {
+    return this.get('compressed').then(result => result.length > 4000);
+  }),
 
   resetDisabled: not('dirty'),
 
@@ -39,18 +44,23 @@ export default Controller.extend({
   compressed: computed('model', function() {
     try {
       JSON.parse(this.model);
-      return this.decompress.stringToZip(this.model);
+      return DS.PromiseObject.create({promise: this.decompress.stringToZip(this.model)});
     } catch(e) {
-      return new Promise((resolve, reject) => reject());
+      return DS.PromiseObject.create({promise: new Promise((resolve, reject) => reject())});
     }
+  }),
+
+  baseURL: computed(function() {
+    let prot = location.protocol;
+    let host = location.hostname;
+    let path = location.pathname;
+    return `${prot}//${host}${path}`;
   }),
 
   makeShortURL() {
     return this.compressed.then(comp => {
-      let prot = location.protocol;
-      let host = location.hostname;
-      let path = location.pathname;
-      return this.shortener.shorten(`${prot}//${host}${path}?json=${encodeURIComponent(comp)}`)
+      
+      return this.shortener.shorten(`${this.baseURL}?json=${encodeURIComponent(comp)}`)
       .then(short => {
         this.set('shortUrl', short);
         return short;
