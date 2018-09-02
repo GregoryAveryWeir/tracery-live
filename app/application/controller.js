@@ -15,6 +15,7 @@ export default Controller.extend({
   dirty: false,
   shortUrl: null,
   shareUrl: null,
+  remoteError: null,
 
   overlongUrl: computed('compressed', 'compressed.isSettled', function() {
     return this.get('compressed').then(result => result.length > 4000);
@@ -64,6 +65,8 @@ export default Controller.extend({
       .then(short => {
         this.set('shortUrl', short);
         return short;
+      }).catch(() => {
+        this.set('remoteError', `Error shortening URL. It may be too long. Try making a Gist or other remotely-hosted file and link the raw URL like ${this.baseURL}?url=[URL-component-encoded address of a grammar file]`);
       });
     });
   },

@@ -11,7 +11,11 @@ export default Service.extend({
         url: `https://is.gd/create.php?format=json&url=${encodeURIComponent(URL)}`,
         dataType: 'jsonp',
       }).then(function(data) {
-        run(null, resolve, data.shorturl);
+        if(data.shorturl) {
+          run(null, resolve, data.shorturl);
+        } else {
+          reject(data.errormessage);
+        }
       }, function(jqXHR) {
         jqXHR.then = null; // tame jQuery's ill mannered promises
         run(null, reject, jqXHR);

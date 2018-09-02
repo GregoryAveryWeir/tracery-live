@@ -51,6 +51,11 @@
       {{/if}}
     </p>
   {{/if}}
+  {{#if remoteError}}
+    <p class="actions error">
+      {{remoteError}}
+    </p>
+  {{/if}}
   
   <p class="footer-text">
     <a href="http://tracery.io">Tracery</a> was created by <a href="http://www.galaxykate.com/">GalaxyKate</a>. Compressed URL inspired by <a href="https://itty.bitty.site/">itty.bitty.site</a> by <a href="https://github.com/alcor">Nicholas Jitkoff</a>.
