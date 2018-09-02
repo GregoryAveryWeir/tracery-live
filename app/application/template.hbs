@@ -22,11 +22,31 @@
   <p class="actions">
     <button {{action 'shuffle'}}>Shuffle <i class="fa fa-random"></i></button>
     <button {{action 'edit'}}>{{if editing 'Close Editor' 'Edit'}} <i class="fa fa-edit"></i></button>
-    <a disabled={{tweetDisabled}} class="btn {{if tweetDisabled 'btn-disabled'}}" target="_blank"
-      href="{{twitterURL.content}}">
-      Tweet This Grammar <i class="fa fa-twitter"></i>
-    </a>
+    <button disabled={{shareUrl}} {{action 'share'}}>
+      Share This Grammar <i class="fa fa-share-alt"></i>
+    </button>
+    <button disabled={{shortDisabled}} {{action 'makeShortURLAction'}}>
+      Make Short URL <i class="fa fa-link"></i>
+    </button>
   </p>
+  {{#if shareUrl}}
+    <p class="actions">
+      {{share-panel buttons="fb,vk,twitter,linkedin,gplus" labels="Share,Share,Tweet,Share,Share" url=shareUrl
+        title='Check out this Tracery grammar on Tracery Live'
+        hashtags='tracery'}}
+    </p>
+  {{/if}}
+  {{#if shortUrl}}
+    <p class="actions">
+      {{input id="shortUrl" value=shortUrl}}
+      {{#if (is-clipboard-supported)}}
+        {{#copy-button class="btn-outline" clipboardTarget="#shortUrl"}}
+          Copy <i class="fa fa-copy"></i>
+        {{/copy-button}}
+      {{/if}}
+    </p>
+  {{/if}}
+  
   <p class="footer-text">
     <a href="http://tracery.io">Tracery</a> was created by <a href="http://www.galaxykate.com/">GalaxyKate</a>. Compressed URL inspired by <a href="https://itty.bitty.site/">itty.bitty.site</a> by <a href="https://github.com/alcor">Nicholas Jitkoff</a>.
   </p>

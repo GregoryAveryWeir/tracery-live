@@ -1,17 +1,12 @@
 import Route from '@ember/routing/route';
 import {inject as service} from '@ember/service';
-import {Promise} from 'rsvp';
 
 export default Route.extend({
   decompress: service(),
 
   model(params) {
     if(params.json) {
-      return new Promise((resolve) => {
-        this.decompress.zipToString(params.json, result => {
-          resolve(result);
-        });
-      });
+      return this.decompress.zipToString(params.json);
     }
     return JSON.stringify({
   "origin": [

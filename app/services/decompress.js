@@ -25,19 +25,10 @@
 /* global LZMA */
 
 import Service from '@ember/service';
+import {Promise} from 'rsvp';
 
-var BASE64_MARKER = ';base64,';
-var LZMA64_MARKER = ';bxze64,';
 
 export default Service.extend({
-  compressDataURI(dataURI, callback) {
-    var base64Index = dataURI.indexOf(BASE64_MARKER);
-    var base64 = dataURI.substring(base64Index + BASE64_MARKER.length);
-    this.stringToZip(this.base64ToByteArray(base64), function(result) {
-      callback(dataURI.substring(0, base64Index) + LZMA64_MARKER + result)    
-    })
-  },
-
   base64ToByteArray(base64) {
     var raw = window.atob(base64);
     var rawLength = raw.length;
@@ -48,60 +39,22 @@ export default Service.extend({
     return array;
   },
 
-  stringToZip(string, callback) {
-    LZMA.compress(string, 9, function(result) {
-      var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(result)));
-      return callback(base64String);
+  stringToZip(string) {
+    return new Promise(resolve => {
+      LZMA.compress(string, 9, function(result) {
+        var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(result)));
+        return resolve(base64String);
+      });
     });
   },
 
-  decompressDataURI(dataURI, preamble, callback) {
-    var base64Index = dataURI.indexOf(LZMA64_MARKER);
-    if (base64Index > 0) {
-      var base64 = dataURI.substring(base64Index + LZMA64_MARKER.length);
-      this.zipToString(base64, function(result) {
-        this.stringToData(result, function(data) {
-          if (!data) return callback(undefined);
-          callback(dataURI.substring(0, base64Index) + BASE64_MARKER + (preamble || '') + data.split(',')[1])     
-        })
-      })
-    } else {
-      callback(dataURI)
-    }
-  },
-
-  zipToString(data, callback) {
-    var array = this.base64ToByteArray(data); 
-    LZMA.decompress(array, function(result  ) {
-      if (!(typeof result === 'string')) result = new Uint8Array(result)
-      callback(result);
+  zipToString(data) {
+    return new Promise(resolve => {
+      var array = this.base64ToByteArray(data); 
+      LZMA.decompress(array, function(result  ) {
+        if (!(typeof result === 'string')) result = new Uint8Array(result)
+        resolve(result);
+      });
     });
-  },
-
-  stringToData(string, callback) {
-    if (!string.length) return callback("");
-    var a = new FileReader();
-    a.onload = function(e) { callback(e.target.result.replace()) }
-    a.readAsDataURL(new Blob([string], {encoding:"UTF-8",type:"text/html;charset=UTF-8"}));
-  },
-
-  dataToString(data, callback) {
-    var blob = this.dataURItoBlob(data)
-    var reader = new FileReader();
-    reader.onload = function() { callback(reader.result) }
-    reader.readAsText(blob);
-  },
-
-  dataURItoBlob(dataURI) {
-    var byteString = atob(dataURI.split(',')[1]);
-    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-    var arrayBuffer = new ArrayBuffer(byteString.length);
-    var _ia = new Uint8Array(arrayBuffer);
-    for (var i = 0; i < byteString.length; i++) {
-        _ia[i] = byteString.charCodeAt(i);
-    }
-    var dataView = new DataView(arrayBuffer);
-    var blob = new Blob([dataView.buffer], { type: mimeString });
-    return blob;
   },
 });
