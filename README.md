@@ -1,7 +1,12 @@
 # tracery-live
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Tracery Live allows you to flatten Tracery grammars delivered via the query string. You can link a URL that directly returns a plaintext/JSON Tracery grammar using the `?url=` parameter, or directly include an LZMA-compressed version of the grammar using the `?json=` grammar (as is prepared by the app itself).
+
+The limits on URL length are funky. They range from under 2000 characters to arbitrarily high. Because of this, grammars of nontrivial length might not work with the `json=` approach in all formats. If you're worried, use the `url=` approach. URL grammars are not currently generated in an automated fashion, so they're for more advanced users.
+
+For more information on Tracery, visit [tracery.io](http://tracery.io). 
+
+# Standard Ember Boilerplate
 
 ## Prerequisites
 
