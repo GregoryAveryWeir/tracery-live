@@ -10,7 +10,7 @@ export default Route.extend({
       return this.decompress.zipToString(params.json);
     }
     if(params.url) {
-      return $.get('https://cors-anywhere.herokuapp.com/' + decodeURIComponent(params.url)).then(result => result);
+      return $.get(decodeURIComponent(params.url)).then(result => result);
     }
     return JSON.stringify({
   "origin": [
