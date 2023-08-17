@@ -12,7 +12,7 @@ URL grammar example: [https://gregoryaveryweir.github.io/tracery-live/?url=https
 
 For more information on Tracery, visit [tracery.io](http://tracery.io). 
 
-Tracery Live includes the hocus-pocus CSS framework, which is now defunct. The docs are archived on [Github Pages](https://gregoryaveryweir.github.io/hocus-pocus/).
+Tracery Live includes the hocus-pocus CSS framework, which is now defunct. You can use its classes in your grammars. The docs are archived on [Github Pages](https://gregoryaveryweir.github.io/hocus-pocus/).
 
 # Standard Ember Boilerplate
 
@@ -58,7 +58,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+Once you have a production build, run `deploy.sh` to deploy to Github Pages! You should probably fork the repo first unless you're an admin of the one you're in.
 
 ## Further Reading / Useful Links
 
