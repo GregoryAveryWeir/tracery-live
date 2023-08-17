@@ -10,7 +10,10 @@
           onError=(action 'jsonError') onBadChange=(action 'jsonError')}}
     </p>
 
-    <p><small>Some HTML tags and styles are allowed. Because #hex colors mess with Tracery syntax, use rgb() colors.</small></p>
+    <p><small>You can use <a href="https://fontawesome.com/v4/icons/"><i class="fa fa-font-awesome" aria-hidden="true"></i> Font Awesome 4.7 icons</a>, 🏳️‍🌈 emoji, and <a href="https://gregoryaveryweir.github.io/hocus-pocus/">hocus-pocus CSS classes</a>.</small></p>
+    <p><small>Some HTML tags and styles are allowed:
+      h1, h2, h3, h4, h5, h6, blockquote, p, a, ul, ol, nl, li, b, i, strong, em, strike, abbr, code, hr, br, div, table, thead, caption, tbody, tr, th, td, pre, iframe, img, span. You can manually style with color, text-align, and font-size. Because #hex colors mess with Tracery syntax, use rgb() colors.
+    </small></p>
 
     <p class={{if overlongUrl 'error'}}>
       URL size: {{compressed.length}}
@@ -31,12 +34,15 @@
       Share This Grammar <i class="fa fa-share-alt"></i>
     </button>
     <button disabled={{shortDisabled}} {{action 'makeShortURLAction'}}>
-      Make Short URL <i class="fa fa-link"></i>
+      Make Short Link <i class="fa fa-link"></i>
+    </button>
+    <button disabled={{editing}} {{action 'loadURLAction'}}>
+      Load External URL <i class="fa fa-cloud-download"></i>
     </button>
   </p>
   {{#if shareUrl}}
     <p class="actions">
-      {{share-panel buttons="fb,vk,twitter,linkedin,gplus" labels="Share,Share,Tweet,Share,Share" url=shareUrl
+      {{share-panel buttons="fb,vk,twitter,linkedin" labels="Share,Share,Tweet,Share" url=shareUrl
         title='Check out this Tracery grammar on Tracery Live'
         hashtags='tracery'}}
     </p>
@@ -61,7 +67,7 @@
     <a href="http://tracery.io">Tracery</a> was created by <a href="http://www.galaxykate.com/">GalaxyKate</a>. Compressed URL inspired by <a href="https://itty.bitty.site/">itty.bitty.site</a> by <a href="https://github.com/alcor">Nicholas Jitkoff</a>.
   </p>
   <p class="footer-text">
-    Tracery Live was created by <a href="http://ludusnovus.net/">Gregory Avery-Weir</a>. <a href="https://github.com/GregoryAveryWeir/tracery-live">Check out the source on GitHub.</a>
+    Tracery Live was created by <a href="http://ludusnovus.net/">Gregory Avery-Weir</a>. <a href="https://github.com/GregoryAveryWeir/tracery-live">Check out the source on GitHub.</a> | <a href="https://github.com/GregoryAveryWeir/tracery-live/issues"><i class="fa fa-bug" aria-hidden="true"></i> Report bugs, please!</a>
   </p>
 </footer>
 </div>
