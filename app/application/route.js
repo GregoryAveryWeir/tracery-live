@@ -10,7 +10,9 @@ export default Route.extend({
       return this.decompress.zipToString(params.json);
     }
     if(params.url) {
-      return $.get('https://cors-anywhere.herokuapp.com/' + decodeURIComponent(params.url)).then(result => result);
+      return $.get(decodeURIComponent(params.url)).then(result => result, result => JSON.stringify({
+        "origin": ["There was an error loading the file. Ensure that you've entered the URL-encoded address of a JSON file, with protocol included, and that it's on a server with appropriate CORS settings. Try putting it on https://gist.github.com/ and grabbing the \"Raw\" URL."]
+      }));
     }
     return JSON.stringify({
   "origin": [
